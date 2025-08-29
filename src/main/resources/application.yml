@@ -1,0 +1,26 @@
+server:
+  port: 8080clsc
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, mappings
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/todo_db
+    username: todo_user
+    password: todo_pass
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+  flyway:
+    locations: classpath:db/migration
+logging:
+  level:
+    org.hibernate.SQL: warn
